@@ -4,8 +4,16 @@
 \alias{impute_simulated}
 \title{Imputation algorithm tester on simulated data}
 \usage{
-impute_simulated(rownum, colnum, cormat, n.iter = 10, MD_pattern,
-  NA_fraction, min_PDM = 10, assumed_pattern = NA)
+impute_simulated(
+  rownum,
+  colnum,
+  cormat,
+  n.iter = 10,
+  MD_pattern,
+  NA_fraction,
+  min_PDM = 10,
+  assumed_pattern = NA
+)
 }
 \arguments{
 \item{rownum}{Number of rows (samples) in the original dataframe (Rows output from the \code{\link{get_data}} function)}
@@ -45,27 +53,25 @@ automatically detect whether there is a MAP matrix in the list and calculate met
 output by this function are calculated for ALL missing values across the dataset, not by variable.
 }
 \examples{
-\dontrun{
-#in case there is no assumed missingness pattern per variable
-wrap <- impute_simulated(rownum = metadata$Rows,
-        colnum = metadata$Columns,
-        cormat = metadata$Corr_matrix,
-        MD_pattern = metadata$MD_Pattern,
-        NA_fraction = metadata$Fraction_missingness,
-        min_PDM = 10,
-        n.iter = 50)
+## in case there is no assumed missingness pattern per variable
+# wrap <- impute_simulated(rownum = metadata$Rows,
+#        colnum = metadata$Columns,
+#        cormat = metadata$Corr_matrix,
+#        MD_pattern = metadata$MD_Pattern,
+#        NA_fraction = metadata$Fraction_missingness,
+#        min_PDM = 10,
+#        n.iter = 50)
 
-#in case there is a pre-defined assumed pattern
-wrap <- impute_simulated(rownum = metadata$Rows,
-        colnum = metadata$Columns,
-        cormat = metadata$Corr_matrix,
-        MD_pattern = metadata$MD_Pattern,
-        NA_fraction = metadata$Fraction_missingness,
-        min_PDM = 10,
-        assumed_pattern = c('MAR','MAR','MCAR','MCAR',
-                          'MNAR','MCAR','MAR','MNAR',
-                          'MCAR','MNAR','MCAR'),
-        n.iter = 50)
-}
+## in case there is a pre-defined assumed pattern
+# wrap <- impute_simulated(rownum = metadata$Rows,
+#        colnum = metadata$Columns,
+#        cormat = metadata$Corr_matrix,
+#        MD_pattern = metadata$MD_Pattern,
+#        NA_fraction = metadata$Fraction_missingness,
+#        min_PDM = 10,
+#        assumed_pattern = c('MAR','MAR','MCAR','MCAR',
+#                          'MNAR','MCAR','MAR','MNAR',
+#                          'MCAR','MNAR','MCAR'),
+#        n.iter = 50)
 
 }
